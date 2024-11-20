@@ -30,10 +30,11 @@ public class Member {
 //			paperBook.setIsAvailable(false);
 //		}
 //	}
-	public void borrowBook(Book book) {
+	public boolean borrowBook(Book book) {
 		BorrowingService borrowingService = new BorrowingService();
-		String result = borrowingService.borrowBook(this, book).getBorrowingMessage();
-		System.out.println(result);
+		BorrowingBookResult result = borrowingService.borrowBook(this, book);
+		System.out.println(result.getBorrowingMessage());
+		return result.isSuccess();
 	}
 	
 //	public void returnBook(Book paperBook) {
@@ -42,10 +43,11 @@ public class Member {
 //			paperBook.setIsAvailable(true);
 //		}
 //	}
-	public void returnBook(Book book) {
+	public boolean returnBook(Book book) {
 		BorrowingService borrowingService = new BorrowingService();
-		String result = borrowingService.returnBook(this, book).getBorrowingMessage();
-		System.out.println(result);
+		BorrowingBookResult result = borrowingService.returnBook(this, book);
+		System.out.println(result.getBorrowingMessage());
+		return result.isSuccess();
 	}
 	
 	public void listBorrowedBooks() {
