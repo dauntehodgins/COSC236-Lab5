@@ -32,7 +32,8 @@ public class Member {
 //	}
 	public void borrowBook(Book book) {
 		BorrowingService borrowingService = new BorrowingService();
-		borrowingService.borrowBook(this, book);
+		String result = borrowingService.borrowBook(this, book).getBorrowingMessage();
+		System.out.println(result);
 	}
 	
 //	public void returnBook(Book paperBook) {
@@ -43,7 +44,8 @@ public class Member {
 //	}
 	public void returnBook(Book book) {
 		BorrowingService borrowingService = new BorrowingService();
-		borrowingService.returnBook(this, book);
+		String result = borrowingService.returnBook(this, book).getBorrowingMessage();
+		System.out.println(result);
 	}
 	
 	public void listBorrowedBooks() {
