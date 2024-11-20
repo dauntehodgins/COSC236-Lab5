@@ -24,18 +24,28 @@ public class Member {
 	public String toString() {
 		return "Member: " + name;
 	}
-	public void borrowBook(Book paperBook) {
-		if (paperBook != null && paperBook.getIsAvailable() == true) {
-			borrowedBooks.add(paperBook);
-			paperBook.setIsAvailable(false);
-		}
+//	public void borrowBook(Book paperBook) {
+//		if (paperBook != null && paperBook.getIsAvailable() == true) {
+//			borrowedBooks.add(paperBook);
+//			paperBook.setIsAvailable(false);
+//		}
+//	}
+	public void borrowBook(Book book) {
+		BorrowingService borrowingService = new BorrowingService();
+		borrowingService.borrowBook(this, book);
 	}
-	public void returnBook(Book paperBook) {
-		if (paperBook != null) {
-			borrowedBooks.remove(paperBook);
-			paperBook.setIsAvailable(true);
-		}
+	
+//	public void returnBook(Book paperBook) {
+//		if (paperBook != null) {
+//			borrowedBooks.remove(paperBook);
+//			paperBook.setIsAvailable(true);
+//		}
+//	}
+	public void returnBook(Book book) {
+		BorrowingService borrowingService = new BorrowingService();
+		borrowingService.returnBook(this, book);
 	}
+	
 	public void listBorrowedBooks() {
 		for (Book paperBook : borrowedBooks)
 			System.out.println(paperBook); // book.toString()
