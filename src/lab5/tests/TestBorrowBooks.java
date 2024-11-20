@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import lab5.AudioBook;
+import lab5.Ebook;
 import lab5.Member;
 import lab5.PaperBook;
 import lab5.RareBook;
@@ -17,7 +18,7 @@ class TestBorrowBooks {
 	
 	PaperBook book1 = new PaperBook("Dune");
 	AudioBook book2 = new AudioBook("1984");
-	RareBook book3 = new RareBook("Harry Potter");
+	Ebook book3 = new Ebook("Harry Potter");
 
 	
 	

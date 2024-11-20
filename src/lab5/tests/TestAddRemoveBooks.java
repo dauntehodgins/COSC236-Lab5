@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import lab5.Library;
+import lab5.AudioBook;
 import lab5.Book;
+import lab5.Ebook;
 import lab5.Member;
 import lab5.PaperBook;
 
@@ -22,8 +24,8 @@ class TestAddRemoveBooks {
 	}
 
 	Book book1 = new PaperBook("Dune");
-	Book book2 = new PaperBook("1984");
-	Book book3 = new PaperBook("Moby Dick");
+	Book book2 = new AudioBook("1984");
+	Book book3 = new Ebook("Moby Dick");
 	
 	Member member = new Member("Grady Booch");
 	
