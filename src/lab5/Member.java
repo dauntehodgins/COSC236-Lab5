@@ -24,21 +24,21 @@ public class Member {
 	public String toString() {
 		return "Member: " + name;
 	}
-	public void borrowBook(Book book) {
-		if (book != null && book.getIsAvailable() == true) {
-			borrowedBooks.add(book);
-			book.setIsAvailable(false);
+	public void borrowBook(Book paperBook) {
+		if (paperBook != null && paperBook.getIsAvailable() == true) {
+			borrowedBooks.add(paperBook);
+			paperBook.setIsAvailable(false);
 		}
 	}
-	public void returnBook(Book book) {
-		if (book != null) {
-			borrowedBooks.remove(book);
-			book.setIsAvailable(true);
+	public void returnBook(Book paperBook) {
+		if (paperBook != null) {
+			borrowedBooks.remove(paperBook);
+			paperBook.setIsAvailable(true);
 		}
 	}
 	public void listBorrowedBooks() {
-		for (Book book : borrowedBooks)
-			System.out.println(book); // book.toString()
+		for (Book paperBook : borrowedBooks)
+			System.out.println(paperBook); // book.toString()
 	}
 	public int borrowedBooksCount() {
 		return borrowedBooks.size();
@@ -46,8 +46,8 @@ public class Member {
 	public void returnAllBooks() {
 		Iterator<Book> bookIterator = borrowedBooks.iterator();
 	    while(bookIterator.hasNext()) {
-		   	 Book book = bookIterator.next();
-		   	 book.setIsAvailable(true);
+		   	 Book paperBook = bookIterator.next();
+		   	 paperBook.setIsAvailable(true);
 	    }
 	    borrowedBooks.clear(); // clear array of borrowed books
 	}
