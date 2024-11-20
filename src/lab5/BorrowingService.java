@@ -3,26 +3,35 @@ package lab5;
 public class BorrowingService implements BorrowingServiceAPI {
 
 	@Override
-	public boolean borrowBook(Member member, Book book) {
-		if(book.getIsAvailable()){
-			member.getBorrowedBooks().add(book);
-			book.setIsAvailable(false);
-			System.out.println(member.getName() + " has succesfully borrowed: " + book.getTitle());
-			return true;
+	public BorrowingBookResult borrowBook(Member member, Book book) {
+		BorrowingBookResult borrow = null;
+		if(member.getBorrowedBooks().size() <= 3) {
+			if(book.getIsAvailable()){
+				member.getBorrowedBooks().add(book);
+				book.setIsAvailable(false);
+				borrow = new BorrowingBookResult(true, "Book borrowed");
+			}else {
+				borrow = new BorrowingBookResult(false, "Book already borrowed");
+			}
+		}else {
+			borrow = new BorrowingBookResult(false, member.getName() + " has already borrowed 3 books.");
 		}
-		System.out.println("Error borrowing: " + book.getTitle());
-		return false;
+		return borrow;
 	}
 	@Override
-	public boolean returnBook(Member member, Book book) {
-		if(member.getBorrowedBooks().contains(book)) {
-			book.setIsAvailable(true);
-			member.getBorrowedBooks().remove(book);
-			System.out.println(member.getName() + "has returned: " + book.getTitle());
-			return true;
-		}else {
-			System.out.println("Member has not borrowed: " + book.getTitle());
+	public BorrowingBookResult returnBook(Member member, Book book) {
+		BorrowingBookResult returnedBook = null;
+		if(!book.getIsAvailable()) {
+			if(member.getBorrowedBooks().contains(book)) {
+				book.setIsAvailable(true);
+				member.getBorrowedBooks().remove(book);
+				returnedBook = new BorrowingBookResult(true, "Book returned");
+			}else {
+				returnedBook = new BorrowingBookResult(false, "Member has not borrowed " + book.getTitle());
+			}
+		}else { 
+			returnedBook = new BorrowingBookResult(false, book.getTitle() + " has already been returned");
 		}
-		return false;
+		return returnedBook;
 	}
 }
