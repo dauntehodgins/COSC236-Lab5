@@ -4,9 +4,20 @@ public class LibrarianController {
 
 	Library library; // Library dependency
 	BorrowingService borrowingService;
+	EBookFactory eBookFactory;
+	AudioBookFactory audioBookFactory;
+	RareBookFactory rareBookFactory;
+	PaperBookFactory paperBookFactory;
 	public LibrarianController( ) {
 		this.library = new Library(); // Constructor injection
 		this.borrowingService = BorrowingService.getInstance();
+		this.eBookFactory = new EBookFactory(library);
+		this.audioBookFactory = new AudioBookFactory(library);
+		this.rareBookFactory = new RareBookFactory(library);
+		this.paperBookFactory = new PaperBookFactory(library);
+		
+		
+		//Creating books with Book Factories
 	}
 	public Library getLibrary() {
 		return this.library;
@@ -18,16 +29,23 @@ public class LibrarianController {
 		library.showMembers();
 	}
 	public void addPaperBook(String title) {
-		library.addBook(new PaperBook(title));  // Book class constructor dependency
+		//library.addBook(new PaperBook(title));  // Book class constructor dependency
+		paperBookFactory.createBook(title);
 	}
 	public void addEbook(String title) {
-		library.addBook(new Ebook(title));  // Book class constructor dependency
+		//library.addBook(new Ebook(title));  // Book class constructor dependency
+		eBookFactory.createBook(title);
 	}
 	public void addAudioBook(String title) {
-		library.addBook(new AudioBook(title));  // Book class constructor dependency
+		//library.addBook(new AudioBook(title));  // Book class constructor dependency
+		audioBookFactory.createBook(title);
 	}
 	public void addRareBook(String title) {
-		library.addBook(new RareBook(title));  // Book class constructor dependency
+		//library.addBook(new RareBook(title));  // Book class constructor dependency
+		rareBookFactory.createBook(title);
+	}
+	public void addBook(BookFactory factory, String title) {
+		library.addBook(factory.createBook(title));
 	}
 	public void addMember(String name) {
 		library.addMember(new Member(name, borrowingService)); // Member class constructor dependency

@@ -2,7 +2,6 @@ package lab5;
 
 public interface Book {
 	
-	
 	public String toString(); 
 	
 	public void setIsAvailable(boolean isAvailable) ;
