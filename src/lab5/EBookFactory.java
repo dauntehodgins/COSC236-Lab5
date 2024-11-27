@@ -7,8 +7,7 @@ public class EBookFactory extends BookFactory {
 	}
 
 	@Override
-	public
-	Book createBook(String title) {
+	public Book createBook(String title) {
 		return new Ebook(title);
 	}
 
