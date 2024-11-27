@@ -2,8 +2,8 @@ package lab5;
 
 public class LibrarianController {
 
-	Library library; // Library dependency
-	BorrowingService borrowingService;
+	private Library library; // Library dependency
+	private BorrowingService borrowingService;
 	EBookFactory eBookFactory;
 	AudioBookFactory audioBookFactory;
 	RareBookFactory rareBookFactory;
