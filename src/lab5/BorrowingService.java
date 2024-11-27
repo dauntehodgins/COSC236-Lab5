@@ -1,7 +1,13 @@
 package lab5;
 
 public class BorrowingService implements BorrowingServiceAPI {
-
+	private static BorrowingService instance;
+	public static BorrowingService getInstance(){
+		if(instance == null){
+			instance = new BorrowingService();
+		}
+		return instance;
+	}
 	@Override
 	public BorrowingBookResult borrowBook(Member member, Book book) {
 		BorrowingBookResult borrow = null;
