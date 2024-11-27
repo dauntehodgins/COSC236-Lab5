@@ -10,18 +10,24 @@ public class BorrowingService implements BorrowingServiceAPI {
 	}
 	@Override
 	public BorrowingBookResult borrowBook(Member member, Book book) {
-		BorrowingBookResult borrow = null;
-		if(member.getBorrowedBooks().size() <= 3) {
-			if(book.getIsAvailable()){
-				member.getBorrowedBooks().add(book);
-				book.setIsAvailable(false);
-				borrow = new BorrowingBookResult(true, "Book borrowed");
-			}else {
-				borrow = new BorrowingBookResult(false, "Book already borrowed");
-			}
-		}else {
-			borrow = new BorrowingBookResult(false, member.getName() + " has already borrowed 3 books.");
+		
+		BorrowingBookResult borrow=null;
+		
+		if(book.getIsAvailable()==false) {
+			borrow= new BorrowingBookResult(false, "Book already borrowed.");
+			return borrow;
 		}
+		
+		if(member.getBorrowedBooks().size()==3) {
+			borrow= new BorrowingBookResult(false, member.getName()+ " has already borrowed 3 books.");
+			return borrow;
+		}
+
+		else {
+			borrow = new BorrowingBookResult(true, "Book borrowed.");
+			member.getBorrowedBooks().add(book);
+			book.setIsAvailable(false);
+					}
 		return borrow;
 	}
 	
