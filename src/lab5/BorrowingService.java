@@ -14,7 +14,7 @@ public class BorrowingService implements BorrowingServiceAPI {
 		BorrowingBookResult borrow=null;
 		
 		if(book.getIsAvailable()==false) {
-			borrow= new BorrowingBookResult(false, "Book already borrowed");
+			borrow= new BorrowingBookResult(false, "Book already borrowed.");
 			return borrow;
 		}
 		
@@ -24,7 +24,7 @@ public class BorrowingService implements BorrowingServiceAPI {
 		}
 
 		else {
-			borrow = new BorrowingBookResult(true, "Book borrowed");
+			borrow = new BorrowingBookResult(true, "Book borrowed.");
 			member.getBorrowedBooks().add(book);
 			book.setIsAvailable(false);
 					}

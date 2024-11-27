@@ -38,15 +38,13 @@ public class BorrowingServiceTests {
 		
 		BorrowingService.getInstance().borrowBook(member1, book3);
 		
-		assertEquals(BorrowingService.getInstance().borrowBook(member1, book1).getBorrowingMessage(),"Book already borrowed");
+		assertEquals(BorrowingService.getInstance().borrowBook(member1, book1).getBorrowingMessage(),"Book already borrowed.");
 		
 		System.out.println(member1.getBorrowedBooks());
 		
-		System.out.println(BorrowingService.getInstance().borrowBook(member1, book4).getBorrowingMessage());
+assertEquals(BorrowingService.getInstance().borrowBook(member1, book4).getBorrowingMessage(),"Dude has already borrowed 3 books.");
 		
-		
-		
-		
+assertEquals(BorrowingService.getInstance().borrowBook(member2,book4).getBorrowingMessage(),"Book borrowed.");
 		
 	}
 }
