@@ -32,6 +32,8 @@ class TestController {
 	@Test
 	void borrowBooksByController() {
 		
+		System.out.println(library.booksCount()+"fuck");
+		
 		assertAll("Check inital library state", 
 			() -> assertEquals(library.membersCount(),1),
 			() -> assertEquals(library.booksCount(),3),
