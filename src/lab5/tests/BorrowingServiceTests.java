@@ -31,7 +31,6 @@ public class BorrowingServiceTests {
 		Book book4 = new RareBook("Java for dummies");
 		
 		
-		
 		BorrowingService.getInstance().borrowBook(member1, book1);
 		
 		BorrowingService.getInstance().borrowBook(member1, book2);
