@@ -12,6 +12,12 @@ public class BorrowingService implements BorrowingServiceAPI {
 	public BorrowingBookResult borrowBook(Member member, Book book) {
 
 		BorrowingBookResult borrow=null;
+		
+		if(member.getBorrowedBooks().contains(book)==true) {
+			borrow= new BorrowingBookResult(false, "This member already borrowed this book.");
+			return borrow;
+		}
+		
 
 		if(book.getIsAvailable()==false) {
 			borrow= new BorrowingBookResult(false, "Book already borrowed.");
