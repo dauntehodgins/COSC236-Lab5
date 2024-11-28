@@ -67,4 +67,8 @@ public class Member {
 	    }
 	    borrowedBooks.clear(); // clear array of borrowed books
 	}
+	public BorrowingService getBorrowingService() {
+		
+		return this.borrowingService;
+	}
 }
